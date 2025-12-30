@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Factor Authentication</title>
+   <!-- NAVBAR CSS -->
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="two-fa.css">
+</head>
+<body>
+ <!-- NAVBAR LOAD -->
+  <div id="navbar"></div>
+<div class="page">
+
+  <h1 class="title">Two-Factor Authentication</h1>
+
+  <p class="subtitle">
+    Verification code sent to <b>example@gmail.com</b>
+  </p>
+
+  <p class="info">
+    Enter the 6-digit verification code sent to your email / phone.
+  </p>
+
+  <div class="otp-row">
+    <input type="text" maxlength="1">
+    <input type="text" maxlength="1">
+    <input type="text" maxlength="1">
+    <input type="text" maxlength="1">
+    <input type="text" maxlength="1">
+    <input type="text" maxlength="1">
+  </div>
+
+  <button class="verify-btn">Verify Code</button>
+
+  <div class="resend">Resend Code</div>
+
+</div>
+<script>
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+
+      const script = document.createElement("script");
+      script.src = "navbar.js";
+    script.type = "module"; 
+      script.onload = () => {
+        if (typeof initNavbar === "function") {
+          initNavbar(); // ⭐ VERY IMPORTANT
+        }
+      };
+
+      document.body.appendChild(script);
+    });
+</script>
+
+</body>
+</html>

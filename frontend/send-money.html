@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Money</title>
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="send-money.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<div class="page">
+  <div class="title">Send Money</div>
+
+  <div class="input-group">
+
+    <input 
+      type="number" 
+      id="amount" 
+      placeholder="Enter Amount"
+    >
+
+    <input 
+      type="text" 
+      id="receiver" 
+      placeholder="Receiver UID"
+    >
+
+    <select id="method">
+      <option value="">Select Method</option>
+      <option value="UPI">UPI</option>
+      <option value="Bank">Bank Transfer</option>
+      <option value="Wallet">Wallet</option>
+    </select>
+
+  </div>
+
+  <button id="sendBtn" class="send-btn">
+    SEND MONEY
+  </button>
+</div>
+
+<script type="module" src="send-money.js"></script>
+
+<script>
+fetch("navbar.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+    const script = document.createElement("script");
+    script.src = "navbar.js";
+        script.type = "module"; 
+    script.onload = () => {
+      if (typeof initNavbar === "function") initNavbar();
+    };
+    document.body.appendChild(script);
+  });
+</script>
+
+</body>
+</html>

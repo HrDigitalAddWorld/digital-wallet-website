@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile Recharge</title>
+  <!-- NAVBAR CSS -->
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="mobile-recharge.css" />
+</head>
+<body>
+  <!-- NAVBAR LOAD -->
+  <div id="navbar"></div>
+
+  <div class="page">
+    <h2 class="title">Mobile Recharge</h2>
+
+    <div class="card">
+      <div class="input-group">
+        <label>Phone Number</label>
+        <input type="text" id="phoneNumber" placeholder="Enter Phone Number" />
+      </div>
+
+      <div class="input-group">
+        <label>Operator</label>
+        <input type="text" id="operator" placeholder="Operator" />
+      </div>
+
+      <div class="input-group">
+        <label>Circle</label>
+        <input type="text" id="circle" placeholder="Circle" />
+      </div>
+
+      <div class="input-group">
+        <label>Amount</label>
+        <input type="text" id="amount" placeholder="Enter Amount" />
+      </div>
+
+      <button class="recharge-btn" id="rechargeBtn">Recharge</button>
+    </div>
+
+    <div class="plans-card">
+      <h3>Available Plans</h3>
+      <div class="plans">
+        <div>Item 0</div>
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <div>Item 4</div>
+        <div>Item 5</div>
+        <div>Item 6</div>
+        <div>Item 7</div>
+        <div>Item 8</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        const script = document.createElement("script");
+        script.src = "navbar.js";
+    script.type = "module"; 
+        script.onload = () => {
+          if (typeof initNavbar === "function") {
+            initNavbar(); // ⭐ VERY IMPORTANT
+          }
+        };
+
+        document.body.appendChild(script);
+      });
+  </script>
+
+  <!-- Mobile Recharge JS -->
+  <script type="module" src="mobile-recharge.js"></script>
+</body>
+</html>

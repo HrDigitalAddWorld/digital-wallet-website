@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #f5f5f5;
+}
+
+/* BODY NORMAL — NAVBAR SAFE */
+body {
+  display: block;
+}
+
+/* PAGE — CENTERED LIKE REAL APP */
+.page {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px 20px;
+
+  margin: 120px auto 0;   /* 🔥 navbar ke niche + center */
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* LIST */
+.list {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* ITEM */
+.list-item {
+  padding: 14px 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* LAST ITEM */
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* CREDIT / DEBIT */
+.credit {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.debit {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+  .page {
+    margin-top: 90px;
+    padding: 20px 14px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}

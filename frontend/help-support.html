@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Help & Support</title>
+  <!-- NAVBAR CSS -->
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="help-support.css" />
+</head>
+<body>
+  <!-- NAVBAR LOAD -->
+  <div id="navbar"></div>
+
+  <div class="page">
+    <div class="card">
+      <h2 class="title">Help & Support</h2>
+
+      <label>Select Issue Category</label>
+      <select id="category">
+        <option value="">Select category</option>
+        <option value="Login Issue">Login Issue</option>
+        <option value="Payment Issue">Payment Issue</option>
+        <option value="Expense Not Added">Expense Not Added</option>
+        <option value="App Bug">App Bug</option>
+      </select>
+
+      <label>Describe your issue in detail</label>
+      <textarea id="message" placeholder="Type your message here..."></textarea>
+
+      <button class="btn outline" id="attachBtn">Attach Screenshot (Optional)</button>
+      <button class="btn primary" id="submitBtn">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        const script = document.createElement("script");
+        script.src = "navbar.js";
+            script.type = "module"; 
+        script.onload = () => {
+          if (typeof initNavbar === "function") {
+            initNavbar(); // ⭐ VERY IMPORTANT
+          }
+        };
+        document.body.appendChild(script);
+      });
+  </script>
+
+  <!-- Link to Firebase Support JS -->
+  <script type="module" src="help-support.js"></script>
+</body>
+</html>

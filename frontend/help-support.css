@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #f5f5f5;   /* background same */
+}
+
+/* 🔥 PAGE FULL WIDTH */
+.page {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* LABEL */
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* INPUT / SELECT / TEXTAREA */
+select,
+textarea {
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.btn {
+  width: auto;
+  min-width: 180px;
+  padding: 10px 18px;
+  background: #6a11ff;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 12px auto;
+}
+
+/* SECOND BUTTON SAME STYLE */
+.btn.outline {
+  margin-top: 6px;
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .btn {
+    min-width: 150px;
+  }
+}
+/* FORM BOX */
+.card {
+  width: 100%;
+  max-width: 1000px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* PAGE SIDE GAP */
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;   /* left–right center */
+  align-items: center;       /* top–bottom center */
+  padding: 20px;       /* 🔥 thoda niche */
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 14px;
+      padding-top: 30px;   /* mobile gap */
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+}

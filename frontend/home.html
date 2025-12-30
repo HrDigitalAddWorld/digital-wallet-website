@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet Home</title>
+
+  <!-- PAGE CSS -->
+  <link rel="stylesheet" href="home.css">
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR LOAD HERE -->
+  <div id="navbar"></div>
+
+  <!-- User Card -->
+  <div class="user-card">
+    <h1 id="userName">Guest User</h1>
+    <p>Wallet Balance</p>
+    <h2 id="userBalance">₹70.00</h2>
+    <p id="userID">User ID: 448758834545</p>
+
+    <button class="primary-btn" data-link="add-money.html">Add Money</button>
+    <button class="primary-btn" data-link="transfer-money.html">Transfer Money</button>
+  </div>
+
+  <!-- Sections -->
+  <div class="section">
+    <h3>Send & Receive</h3>
+    <div class="grid">
+      <div class="card-btn" data-link="send-money.html"><i class="fas fa-paper-plane"></i><span>Send</span></div>
+      <div class="card-btn" data-link="receive-money.html"><i class="fas fa-download"></i><span>Receive</span></div>
+      <div class="card-btn" data-link="qr-scan.html"><i class="fas fa-qrcode"></i><span>QR Scan</span></div>
+      <div class="card-btn" data-link="transaction-history.html"><i class="fas fa-clock"></i><span>Transaction History</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Account & Bank Details</h3>
+    <div class="grid">
+      <div class="card-btn" data-link="bank-details.html"><i class="fas fa-home"></i><span>Bank Details</span></div>
+      <div class="card-btn" data-link="mobile-recharge.html"><i class="fas fa-phone"></i><span>Mobile Recharge</span></div>
+      <div class="card-btn" data-link="security.html"><i class="fas fa-shield-alt"></i><span>Security</span></div>
+      <div class="card-btn" data-link="settings.html"><i class="fas fa-cog"></i><span>Settings</span></div>
+      <div class="card-btn" data-link="about.html"><i class="fas fa-info-circle"></i><span>About</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Offers & Invite</h3>
+    <div class="grid">
+      <div class="card-btn" data-link="offers.html"><i class="fas fa-star"></i><span>Offers</span></div>
+      <div class="card-btn" data-link="invite.html"><i class="fas fa-user-friends"></i><span>Invite</span></div>
+      <div class="card-btn" data-link="expense-tracker.html"><i class="fas fa-chart-pie"></i><span>Expense Tracker</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Help & Support</h3>
+    <div class="grid">
+      <div class="card-btn" data-link="chatbot.html"><i class="fas fa-comment"></i><span>Chatbot</span></div>
+      <div class="card-btn" data-link="help-support.html"><i class="fas fa-exclamation-circle"></i><span>Help & Support</span></div>
+    </div>
+  </div>
+
+  <script type="module" src="home.js"></script>
+
+
+  <!-- NAVBAR LOAD -->
+ <!-- <script>
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar").innerHTML = html;
+
+      const script = document.createElement("script");
+      script.src = "navbar.js";
+           script.type = "module"; 
+      script.onload = () => initNavbar(); // 🔥 VERY IMPORTANT
+      document.body.appendChild(script);
+    });
+</script> -->
+
+
+</body>
+</html>

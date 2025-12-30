@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    #7cc9ff 0%,
+    #bfe9ff 45%,
+    #e8f8f0 100%
+  );
+  color: #2c2c2c;
+  line-height: 1.8;
+}
+
+/* ================= HEADER ================= */
+.header {
+  background: linear-gradient(135deg, #0f6cff, #6bb7ff);
+  text-align: center;
+  padding: 100px 20px 90px;
+  color: #fff;
+}
+
+.header img {
+  width: 90px;
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.header p {
+  font-size: 17px;
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.95;
+}
+
+/* ================= ABOUT SECTION ================= */
+.about {
+  padding: 0 20px 120px;
+}
+
+.container {
+  max-width: 960px;
+  margin: -70px auto 0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 70px 65px;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.1);
+  font-size: 17px;
+}
+
+.container p {
+  margin-bottom: 28px;
+  color: #444;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: transparent;
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.footer p {
+  font-size: 15px;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.icons a {
+  font-size: 24px;
+  margin: 0 14px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.icons a:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .header {
+    padding: 80px 18px 75px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .container {
+    padding: 50px 35px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 40px 25px;
+  }
+}

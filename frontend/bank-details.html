@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Details</title>
+  <!-- NAVBAR CSS -->
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="bank-details.css" />
+</head>
+<body>
+  <!-- NAVBAR LOAD -->
+  <div id="navbar"></div>
+
+  <div class="page">
+    <h1 class="title">Add Bank Details</h1>
+    <p class="subtitle">
+      Enter your bank details below. These details will be used for secure payments.
+    </p>
+
+    <div class="card">
+      <input type="text" id="name" placeholder="Account Holder Name" />
+      <input type="text" id="bank" placeholder="Bank Name" />
+      <input type="text" id="account" placeholder="Account Number" />
+      <input type="text" id="ifsc" placeholder="IFSC Code" />
+      <input type="text" id="branch" placeholder="Branch" />
+      <input type="text" id="mobile" placeholder="Mobile Number" />
+
+      <button type="button" id="saveBtn">SAVE DETAILS</button>
+      <button type="button" id="viewBtn" class="view-btn">VIEW SAVED DETAILS</button>
+    </div>
+
+    <!-- SAVED DETAILS CARD -->
+    <div class="saved-card" id="savedDetails" style="display:none;">
+      <h2>Saved Bank Details</h2>
+      <p><b>Name:</b> <span id="sName"></span></p>
+      <p><b>Bank:</b> <span id="sBank"></span></p>
+      <p><b>Account:</b> <span id="sAccount"></span></p>
+      <p><b>IFSC:</b> <span id="sIfsc"></span></p>
+      <p><b>Branch:</b> <span id="sBranch"></span></p>
+      <p><b>Mobile:</b> <span id="sMobile"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Load Navbar
+    fetch("navbar.html")
+      .then((res) => res.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+        const script = document.createElement("script");
+        script.src = "navbar.js";
+            script.type = "module"; 
+        script.onload = () => {
+          if (typeof initNavbar === "function") initNavbar();
+        };
+        document.body.appendChild(script);
+      });
+  </script>
+
+  <script type="module">
+    import { auth, db } from './firebase.js'; // Your firebase config file
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const nameInput = document.getElementById("name");
+    const bankInput = document.getElementById("bank");
+    const accountInput = document.getElementById("account");
+    const ifscInput = document.getElementById("ifsc");
+    const branchInput = document.getElementById("branch");
+    const mobileInput = document.getElementById("mobile");
+
+    const saveBtn = document.getElementById("saveBtn");
+    const viewBtn = document.getElementById("viewBtn");
+
+    const savedDetailsDiv = document.getElementById("savedDetails");
+    const sName = document.getElementById("sName");
+    const sBank = document.getElementById("sBank");
+    const sAccount = document.getElementById("sAccount");
+    const sIfsc = document.getElementById("sIfsc");
+    const sBranch = document.getElementById("sBranch");
+    const sMobile = document.getElementById("sMobile");
+
+    let currentUserId = null;
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        // Redirect to login page if not logged in
+        window.location.href = "login.html";
+      } else {
+        currentUserId = user.uid;
+        await loadBankDetails();
+      }
+    });
+
+    async function loadBankDetails() {
+      if (!currentUserId) return;
+
+      const docRef = doc(db, "bankDetails", currentUserId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        sName.innerText = data.name;
+        sBank.innerText = data.bank;
+        sAccount.innerText = data.account;
+        sIfsc.innerText = data.ifsc;
+        sBranch.innerText = data.branch;
+        sMobile.innerText = data.mobile;
+        savedDetailsDiv.style.display = "block";
+      } else {
+        savedDetailsDiv.style.display = "none";
+      }
+    }
+
+    saveBtn.addEventListener("click", async () => {
+      const name = nameInput.value.trim();
+      const bank = bankInput.value.trim();
+      const account = accountInput.value.trim();
+      const ifsc = ifscInput.value.trim();
+      const branch = branchInput.value.trim();
+      const mobile = mobileInput.value.trim();
+
+      if (!name || !bank || !account || !ifsc || !branch || !mobile) {
+        alert("Please fill all details before saving");
+        return;
+      }
+
+      if (!currentUserId) {
+        alert("User not logged in");
+        return;
+      }
+
+      try {
+        const docRef = doc(db, "bankDetails", currentUserId);
+        await setDoc(docRef, { name, bank, account, ifsc, branch, mobile });
+        alert("Bank details saved successfully ✅");
+
+        // Clear inputs
+        nameInput.value = "";
+        bankInput.value = "";
+        accountInput.value = "";
+        ifscInput.value = "";
+        branchInput.value = "";
+        mobileInput.value = "";
+
+        await loadBankDetails();
+      } catch (error) {
+        alert("Error saving details: " + error.message);
+      }
+    });
+
+    viewBtn.addEventListener("click", async () => {
+      await loadBankDetails();
+      if (savedDetailsDiv.style.display === "none") {
+        alert("No saved details found");
+      }
+    });
+  </script>
+</body>
+</html>
